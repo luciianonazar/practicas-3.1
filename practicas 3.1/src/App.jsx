@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
-
+import Buscador from "./components/Buscador";
+import TarjetaPais from "./components/TarjetaPais";
+import Historial from "./components/Historial";
 
 function App() {
   const [busqueda, setBusqueda] = useState("");
@@ -37,8 +39,12 @@ function App() {
   }, [busqueda]);
 
   return (
-    <div>
-      
+    <div style={{ textAlign: "center", padding: "20px" }}>
+      <h1>Buscador de Países</h1>
+      <Buscador setBusqueda={setBusqueda} />
+      {error && <p style={{ color: "red" }}>{error}</p>}
+      {pais && <TarjetaPais pais={pais} />}
+      <Historial historial={historial} />
     </div>
   );
 }
